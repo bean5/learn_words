@@ -20,7 +20,7 @@ for my $line(@lines) {
 &menu();
 
 sub menu() {
-	print "Number of words: ".scalar(@lines);
+	print "\n\nNumber of words: ".scalar(@lines);
 	print "\n";
 	print "What would you like to do?\n";
 	print "1. Just view random words.\n";
@@ -30,30 +30,36 @@ sub menu() {
 	chomp;
 
 	if($_ eq "1") {
+		print "\n";
 		&doRandom();
 	}
 	elsif($_ eq "2") {
+		print "\n";
 		&doMultipleChoice();
 	}
 	elsif($_ eq "3") {
+		print "\n";
 		return;
 	}
 	<>;
 }
 
 sub doRandom() {
-	while(<> ne "x\n") {
+	do {
 		&printRandom();
 	}
+	while(<> ne "x\n");
 	&menu();
 }
 
 sub doMultipleChoice() {
-	while(<> ne "x\n") {
+	do
+	{
 		print "\n\n\n\n\n\n\n\n\n";
 		&showMultipleChoice();
-		print "\n";
+		#print "\n";
 	}
+	while(<> ne "x\n");
 	&menu();
 }
 
